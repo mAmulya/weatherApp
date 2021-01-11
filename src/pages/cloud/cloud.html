@@ -1,0 +1,284 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Daily</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding id="bg">
+  <ion-grid *ngIf='darksky'>
+    <div class="card" style="width: 98%;">
+      <div class="card-body">
+        <ion-list>
+          <ion-item text-wrap>
+            <table>
+              <tr>
+                <td style="width:40%">
+                  <b><h1>Yesterday</h1></b>
+                  <h2>April 29</h2>
+                </td>
+                <td style="width:60%;">
+                  {{ darksky.daily.data[0].sunriseTime | date: 'H:mm' }} AM&nbsp;
+                  <img src="https://www.flaticon.com/premium-icon/icons/svg/1634/1634409.svg" style="width:30%;" alt="ERROR!">&nbsp;
+                  {{ darksky.daily.data[0].sunsetTime | date: 'H:mm' }} PM
+                </td>
+              </tr>
+            </table>
+            <hr align="center" width="80%">
+            <table>
+              <tr>
+                <td [ngSwitch]="darksky.daily.data[0].icon" style="width:45%;">
+                  <img *ngSwitchCase="'clear-day'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_3-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'clear-night'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_3-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'partly-cloudy-day'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'partly-cloudy-night'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'cloudy'" style="width:40%;" src="https://cdn3.iconfinder.com/data/icons/weather-344/142/cloudy-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'rain'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_6-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'sleet'" style="width:40%;" src="https://cdn2.iconfinder.com/data/icons/weather-icons-8/512/sleet-512.png" alt="ERROR!">
+                  <img *ngSwitchCase="'snow'" style="width:40%;" src="http://www.iconarchive.com/download/i99087/psdblast/flat-christmas/snowflake.ico" alt="ERROR!">
+                  <img *ngSwitchCase="'wind'" style="width:40%;" src="https://png.pngtree.com/svg/20170515/6e0950198b.png" alt="ERROR!">
+                  <img *ngSwitchCase="'fog'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_38-256.png" alt="ERROR!">
+                  <span class="icon">{{ darksky.daily.data[0].icon }}</span>
+                </td>
+                <td style="width:55%;text-align:right;">
+                  {{ darksky.daily.data[0].apparentTemperatureHigh }}/{{ darksky.daily.data[0].apparentTemperatureLow }}°F <br>
+                  {{ darksky.daily.data[0].pressure }} mbar&nbsp;<img src="https://img.icons8.com/color/50/000000/atmospheric-pressure.png" style="width:7%;"  alt="ERROR!"><br>
+                  {{ darksky.daily.data[0].humidity }}&nbsp;<img src="https://image.flaticon.com/icons/svg/1532/1532259.svg" style="width:7%;" alt="ERROR!">
+                </td>
+              </tr>
+            </table><br>
+            <p>{{ darksky.daily.data[0].summary }}With wind speed {{ darksky.daily.data[0].windSpeed }} m/hr and chances of rain being {{ darksky.daily.data[0].precipProbability*100 }}%.</p>
+          </ion-item>
+          <ion-item text-wrap>
+            <table>
+              <tr>
+                <td style="width:40%">
+                  <b><h1>Today</h1></b>
+                  <h2>April 30</h2>
+                </td>
+                <td style="width:60%;">
+                  {{ darksky.daily.data[1].sunriseTime | date: 'H:mm' }} AM&nbsp;
+                  <img src="https://www.flaticon.com/premium-icon/icons/svg/1634/1634409.svg" style="width:30%;" alt="ERROR!">&nbsp;
+                  {{ darksky.daily.data[1].sunsetTime | date: 'H:mm' }} PM
+                </td>
+              </tr>
+            </table>
+            <hr align="center" width="80%">
+            <table>
+              <tr>
+                <td [ngSwitch]="darksky.daily.data[1].icon" style="width:45%;">
+                  <img *ngSwitchCase="'clear-day'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_3-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'clear-night'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_3-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'partly-cloudy-day'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'partly-cloudy-night'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'cloudy'" style="width:40%;" src="https://cdn3.iconfinder.com/data/icons/weather-344/142/cloudy-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'rain'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_6-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'sleet'" style="width:40%;" src="https://cdn2.iconfinder.com/data/icons/weather-icons-8/512/sleet-512.png" alt="ERROR!">
+                  <img *ngSwitchCase="'snow'" style="width:40%;" src="http://www.iconarchive.com/download/i99087/psdblast/flat-christmas/snowflake.ico" alt="ERROR!">
+                  <img *ngSwitchCase="'wind'" style="width:40%;" src="https://png.pngtree.com/svg/20170515/6e0950198b.png" alt="ERROR!">
+                  <img *ngSwitchCase="'fog'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_38-256.png" alt="ERROR!">
+                  <span class="icon">{{ darksky.daily.data[1].icon }}</span>
+                </td>
+                <td style="width:55%;text-align:right;">
+                  {{ darksky.daily.data[1].apparentTemperatureHigh }}/{{ darksky.daily.data[1].apparentTemperatureLow }}°F <br>
+                  {{ darksky.daily.data[1].pressure }} mbar&nbsp;<img src="https://img.icons8.com/color/50/000000/atmospheric-pressure.png" style="width:7%;"  alt="ERROR!"><br>
+                  {{ darksky.daily.data[1].humidity }}&nbsp;<img src="https://image.flaticon.com/icons/svg/1532/1532259.svg" style="width:7%;" alt="ERROR!">
+                </td>
+              </tr>
+            </table><br>
+            <p>{{ darksky.daily.data[1].summary }}With wind speed {{ darksky.daily.data[1].windSpeed }} m/hr and chances of rain being {{ darksky.daily.data[1].precipProbability*100 }}%.</p>
+          </ion-item><ion-item text-wrap>
+            <table>
+              <tr>
+                <td style="width:40%">
+                  <b><h1>Wednesday</h1></b>
+                  <h2>May 1</h2>
+                </td>
+                <td style="width:60%;">
+                  {{ darksky.daily.data[2].sunriseTime | date: 'H:mm' }} AM&nbsp;
+                  <img src="https://www.flaticon.com/premium-icon/icons/svg/1634/1634409.svg" style="width:30%;" alt="ERROR!">&nbsp;
+                  {{ darksky.daily.data[2].sunsetTime | date: 'H:mm' }} PM
+                </td>
+              </tr>
+            </table>
+            <hr align="center" width="80%">
+            <table>
+              <tr>
+                <td [ngSwitch]="darksky.daily.data[2].icon" style="width:45%;">
+                  <img *ngSwitchCase="'clear-day'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_3-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'clear-night'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_3-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'partly-cloudy-day'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'partly-cloudy-night'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'cloudy'" style="width:40%;" src="https://cdn3.iconfinder.com/data/icons/weather-344/142/cloudy-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'rain'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_6-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'sleet'" style="width:40%;" src="https://cdn2.iconfinder.com/data/icons/weather-icons-8/512/sleet-512.png" alt="ERROR!">
+                  <img *ngSwitchCase="'snow'" style="width:40%;" src="http://www.iconarchive.com/download/i99087/psdblast/flat-christmas/snowflake.ico" alt="ERROR!">
+                  <img *ngSwitchCase="'wind'" style="width:40%;" src="https://png.pngtree.com/svg/20170515/6e0950198b.png" alt="ERROR!">
+                  <img *ngSwitchCase="'fog'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_38-256.png" alt="ERROR!">
+                  <span class="icon">{{ darksky.daily.data[2].icon }}</span>
+                </td>
+                <td style="width:55%;text-align:right;">
+                  {{ darksky.daily.data[2].apparentTemperatureHigh }}/{{ darksky.daily.data[2].apparentTemperatureLow }}°F <br>
+                  {{ darksky.daily.data[2].pressure }} mbar&nbsp;<img src="https://img.icons8.com/color/50/000000/atmospheric-pressure.png" style="width:7%;"  alt="ERROR!"><br>
+                  {{ darksky.daily.data[2].humidity }}&nbsp;<img src="https://image.flaticon.com/icons/svg/1532/1532259.svg" style="width:7%;" alt="ERROR!">
+                </td>
+              </tr>
+            </table><br>
+            <p>{{ darksky.daily.data[2].summary }}With wind speed {{ darksky.daily.data[2].windSpeed }} m/hr and chances of rain being {{ darksky.daily.data[0].precipProbability*100 }}%.</p>
+          </ion-item><ion-item text-wrap>
+            <table>
+              <tr>
+                <td style="width:40%">
+                  <b><h1>Thursday</h1></b>
+                  <h2>May 2</h2>
+                </td>
+                <td style="width:60%;">
+                  {{ darksky.daily.data[3].sunriseTime | date: 'H:mm' }} AM&nbsp;
+                  <img src="https://www.flaticon.com/premium-icon/icons/svg/1634/1634409.svg" style="width:30%;" alt="ERROR!">&nbsp;
+                  {{ darksky.daily.data[3].sunsetTime | date: 'H:mm' }} PM
+                </td>
+              </tr>
+            </table>
+            <hr align="center" width="80%">
+            <table>
+              <tr>
+                <td [ngSwitch]="darksky.daily.data[3].icon" style="width:45%;">
+                  <img *ngSwitchCase="'clear-day'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_3-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'clear-night'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_3-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'partly-cloudy-day'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'partly-cloudy-night'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'cloudy'" style="width:40%;" src="https://cdn3.iconfinder.com/data/icons/weather-344/142/cloudy-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'rain'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_6-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'sleet'" style="width:40%;" src="https://cdn2.iconfinder.com/data/icons/weather-icons-8/512/sleet-512.png" alt="ERROR!">
+                  <img *ngSwitchCase="'snow'" style="width:40%;" src="http://www.iconarchive.com/download/i99087/psdblast/flat-christmas/snowflake.ico" alt="ERROR!">
+                  <img *ngSwitchCase="'wind'" style="width:40%;" src="https://png.pngtree.com/svg/20170515/6e0950198b.png" alt="ERROR!">
+                  <img *ngSwitchCase="'fog'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_38-256.png" alt="ERROR!">
+                  <span class="icon">{{ darksky.daily.data[3].icon }}</span>
+                </td>
+                <td style="width:55%;text-align:right;">
+                  {{ darksky.daily.data[3].apparentTemperatureHigh }}/{{ darksky.daily.data[3].apparentTemperatureLow }}°F <br>
+                  {{ darksky.daily.data[3].pressure }} mbar&nbsp;<img src="https://img.icons8.com/color/50/000000/atmospheric-pressure.png" style="width:7%;"  alt="ERROR!"><br>
+                  {{ darksky.daily.data[3].humidity }}&nbsp;<img src="https://image.flaticon.com/icons/svg/1532/1532259.svg" style="width:7%;" alt="ERROR!">
+                </td>
+              </tr>
+            </table><br>
+            <p>{{ darksky.daily.data[3].summary }}With wind speed {{ darksky.daily.data[3].windSpeed }} m/hr and chances of rain being {{ darksky.daily.data[3].precipProbability*100 }}%.</p>
+          </ion-item><ion-item text-wrap>
+            <table>
+              <tr>
+                <td style="width:40%">
+                  <b><h1>Friday</h1></b>
+                  <h2>May 3</h2>
+                </td>
+                <td style="width:60%;">
+                  {{ darksky.daily.data[4].sunriseTime | date: 'H:mm' }} AM&nbsp;
+                  <img src="https://www.flaticon.com/premium-icon/icons/svg/1634/1634409.svg" style="width:30%;" alt="ERROR!">&nbsp;
+                  {{ darksky.daily.data[4].sunsetTime | date: 'H:mm' }} PM
+                </td>
+              </tr>
+            </table>
+            <hr align="center" width="80%">
+            <table>
+              <tr>
+                <td [ngSwitch]="darksky.daily.data[4].icon" style="width:45%;">
+                  <img *ngSwitchCase="'clear-day'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_3-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'clear-night'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_3-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'partly-cloudy-day'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'partly-cloudy-night'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'cloudy'" style="width:40%;" src="https://cdn3.iconfinder.com/data/icons/weather-344/142/cloudy-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'rain'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_6-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'sleet'" style="width:40%;" src="https://cdn2.iconfinder.com/data/icons/weather-icons-8/512/sleet-512.png" alt="ERROR!">
+                  <img *ngSwitchCase="'snow'" style="width:40%;" src="http://www.iconarchive.com/download/i99087/psdblast/flat-christmas/snowflake.ico" alt="ERROR!">
+                  <img *ngSwitchCase="'wind'" style="width:40%;" src="https://png.pngtree.com/svg/20170515/6e0950198b.png" alt="ERROR!">
+                  <img *ngSwitchCase="'fog'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_38-256.png" alt="ERROR!">
+                  <span class="icon">{{ darksky.daily.data[4].icon }}</span>
+                </td>
+                <td style="width:55%;text-align:right;">
+                  {{ darksky.daily.data[4].apparentTemperatureHigh }}/{{ darksky.daily.data[4].apparentTemperatureLow }}°F <br>
+                  {{ darksky.daily.data[4].pressure }} mbar&nbsp;<img src="https://img.icons8.com/color/50/000000/atmospheric-pressure.png" style="width:7%;"  alt="ERROR!"><br>
+                  {{ darksky.daily.data[4].humidity }}&nbsp;<img src="https://image.flaticon.com/icons/svg/1532/1532259.svg" style="width:7%;" alt="ERROR!">
+                </td>
+              </tr>
+            </table><br>
+            <p>{{ darksky.daily.data[4].summary }}With wind speed {{ darksky.daily.data[4].windSpeed }} m/hr and chances of rain being {{ darksky.daily.data[4].precipProbability*100 }}%.</p>
+          </ion-item><ion-item text-wrap>
+            <table>
+              <tr>
+                <td style="width:40%">
+                  <b><h1>Saturday</h1></b>
+                  <h2>May 4</h2>
+                </td>
+                <td style="width:60%;">
+                  {{ darksky.daily.data[5].sunriseTime | date: 'H:mm' }} AM&nbsp;
+                  <img src="https://www.flaticon.com/premium-icon/icons/svg/1634/1634409.svg" style="width:30%;" alt="ERROR!">&nbsp;
+                  {{ darksky.daily.data[5].sunsetTime | date: 'H:mm' }} PM
+                </td>
+              </tr>
+            </table>
+            <hr align="center" width="80%">
+            <table>
+              <tr>
+                <td [ngSwitch]="darksky.daily.data[5].icon" style="width:45%;">
+                  <img *ngSwitchCase="'clear-day'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_3-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'clear-night'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_3-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'partly-cloudy-day'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'partly-cloudy-night'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'cloudy'" style="width:40%;" src="https://cdn3.iconfinder.com/data/icons/weather-344/142/cloudy-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'rain'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_6-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'sleet'" style="width:40%;" src="https://cdn2.iconfinder.com/data/icons/weather-icons-8/512/sleet-512.png" alt="ERROR!">
+                  <img *ngSwitchCase="'snow'" style="width:40%;" src="http://www.iconarchive.com/download/i99087/psdblast/flat-christmas/snowflake.ico" alt="ERROR!">
+                  <img *ngSwitchCase="'wind'" style="width:40%;" src="https://png.pngtree.com/svg/20170515/6e0950198b.png" alt="ERROR!">
+                  <img *ngSwitchCase="'fog'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_38-256.png" alt="ERROR!">
+                  <span class="icon">{{ darksky.daily.data[5].icon }}</span>
+                </td>
+                <td style="width:55%;text-align:right;">
+                  {{ darksky.daily.data[5].apparentTemperatureHigh }}/{{ darksky.daily.data[0].apparentTemperatureLow }}°F <br>
+                  {{ darksky.daily.data[5].pressure }} mbar&nbsp;<img src="https://img.icons8.com/color/50/000000/atmospheric-pressure.png" style="width:7%;"  alt="ERROR!"><br>
+                  {{ darksky.daily.data[5].humidity }}&nbsp;<img src="https://image.flaticon.com/icons/svg/1532/1532259.svg" style="width:7%;" alt="ERROR!">
+                </td>
+              </tr>
+            </table><br>
+            <p>{{ darksky.daily.data[6].summary }}With wind speed {{ darksky.daily.data[6].windSpeed }} m/hr and chances of rain being {{ darksky.daily.data[6].precipProbability*100 }}%.</p>
+          </ion-item><ion-item text-wrap>
+            <table>
+              <tr>
+                <td style="width:40%">
+                  <b><h1>Sunday</h1></b>
+                  <h2>May 5</h2>
+                </td>
+                <td style="width:60%;">
+                  {{ darksky.daily.data[7].sunriseTime | date: 'H:mm' }} AM&nbsp;
+                  <img src="https://www.flaticon.com/premium-icon/icons/svg/1634/1634409.svg" style="width:30%;" alt="ERROR!">&nbsp;
+                  {{ darksky.daily.data[7].sunsetTime | date: 'H:mm' }} PM
+                </td>
+              </tr>
+            </table>
+            <hr align="center" width="80%">
+            <table>
+              <tr>
+                <td [ngSwitch]="darksky.daily.data[7].icon" style="width:45%;">
+                  <img *ngSwitchCase="'clear-day'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_3-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'clear-night'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_3-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'partly-cloudy-day'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'partly-cloudy-night'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'cloudy'" style="width:40%;" src="https://cdn3.iconfinder.com/data/icons/weather-344/142/cloudy-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'rain'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_6-256.png" alt="ERROR!">
+                  <img *ngSwitchCase="'sleet'" style="width:40%;" src="https://cdn2.iconfinder.com/data/icons/weather-icons-8/512/sleet-512.png" alt="ERROR!">
+                  <img *ngSwitchCase="'snow'" style="width:40%;" src="http://www.iconarchive.com/download/i99087/psdblast/flat-christmas/snowflake.ico" alt="ERROR!">
+                  <img *ngSwitchCase="'wind'" style="width:40%;" src="https://png.pngtree.com/svg/20170515/6e0950198b.png" alt="ERROR!">
+                  <img *ngSwitchCase="'fog'" style="width:40%;" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_38-256.png" alt="ERROR!">
+                  <span class="icon">{{ darksky.daily.data[7].icon }}</span>
+                </td>
+                <td style="width:55%;text-align:right;">
+                  {{ darksky.daily.data[7].apparentTemperatureHigh }}/{{ darksky.daily.data[0].apparentTemperatureLow }}°F <br>
+                  {{ darksky.daily.data[7].pressure }} mbar&nbsp;<img src="https://img.icons8.com/color/50/000000/atmospheric-pressure.png" style="width:7%;"  alt="ERROR!"><br>
+                  {{ darksky.daily.data[7].humidity }}&nbsp;<img src="https://image.flaticon.com/icons/svg/1532/1532259.svg" style="width:7%;" alt="ERROR!">
+                </td>
+              </tr>
+            </table><br>
+            <p>{{ darksky.daily.data[7].summary }}With wind speed {{ darksky.daily.data[7].windSpeed }} m/hr and chances of rain being {{ darksky.daily.data[7].precipProbability*100 }}%.</p>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+  </ion-grid>
+</ion-content>

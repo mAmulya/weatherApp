@@ -1,17 +1,13 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      Maps
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+    <ion-grid *ngIf="url">
+      <iframe width="100%" height="100%" style="margin: 0; padding: 0; height: 100%; overflow: hidden;position:absolute; left: 0; right: 0; bottom: 0; top: 0px;" id="if" src="https://maps.darksky.net/@temperature,13.556580799999999,80.0251251,11?amp;linkto=maps"></iframe>
+    </ion-grid>
 </ion-content>

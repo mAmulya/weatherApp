@@ -2,16 +2,132 @@
   <ion-navbar>
     <ion-title>Home</ion-title>
   </ion-navbar>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content padding id="bg">
+  <ion-grid *ngIf='weather'>
+    <h3 id="place">  {{ weather.name }}, {{ weather.sys.country }} </h3>
+    <ion-row *ngIf='darksky'>
+      <ion-col size="1">
+        <h1 id="temp">{{ darksky.currently.apparentTemperature }}°F</h1>
+        <h5 id="sum">{{ darksky.currently.summary }}</h5>
+      </ion-col>
+      <ion-col size="9"></ion-col>
+      <ion-col size="2">
+        <img style="width:170px;" src="{{ imgurl }}" alt="ERROR!">
+      </ion-col>
+    </ion-row>
+    <ion-row style="padding-left:7px;">
+      <div class="card" style="width: 98%; padding-left:15px;border-radius:1%;">
+        <div class="card-body">
+          <h3 style="padding-top:10px;" id="cd">Current Details</h3>
+          <ion-row *ngIf='darksky'>
+            <ion-col size="6" class="align">
+              <img style="width:25%;" src="https://www.pngrepo.com/png/276666/170/sunrise-morning.png" alt="sunrise">
+              {{ weather.sys.sunrise | date: "HH:mm:ss" }} AM
+            </ion-col>
+            <ion-col size="6" class="align">
+              <img style="width:25%;" src="https://www.pngrepo.com/png/276661/170/sunset.png" alt="sunset">
+              {{ weather.sys.sunset | date: "HH:mm:ss" }} PM
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <ion-list *ngIf='darksky'>
+                <ion-item>
+                   <ion-icon name="thermometer"> &nbsp;<span class="d"> High/Low</span></ion-icon>
+                   <p class="values">{{ darksky.daily.data[1].apparentTemperatureMax }}/{{ darksky.daily.data[1].apparentTemperatureMin }}°F</p>
+                </ion-item>
+                <ion-item>
+                  <ion-icon name="rainy"> &nbsp;<span class="d"> Precipitation</span></ion-icon>
+                  <p class="values">{{ darksky.currently.precipIntensity }} in</p>
+                </ion-item>
+                <ion-item>
+                  <ion-icon name="download"> &nbsp;<span class="d"> Pressure</span></ion-icon>
+                  <p class="values">{{ darksky.currently.pressure }} mbar</p>
+                </ion-item>
+                <ion-item>
+                  <ion-icon name="paper-plane"> &nbsp;<span class="d"> Wind</span></ion-icon>
+                  <p class="values">{{ darksky.currently.windSpeed }} m/hr</p>
+                </ion-item>
+                <ion-item>
+                  <ion-icon name="water"> &nbsp;<span class="d"> Humidity(relative)</span></ion-icon>
+                  <p class="values">{{ darksky.currently.humidity }} </p>
+                </ion-item>
+                <ion-item>
+                  <ion-icon name="color-fill"> &nbsp;<span class="d"> Dew Point</span></ion-icon>
+                  <p class="values">{{ darksky.currently.dewPoint }}°F</p>
+                </ion-item>
+                <ion-item>
+                  <ion-icon name="sunny"> &nbsp;<span class="d"> UV Index</span></ion-icon>
+                  <p class="values">{{ darksky.currently.uvIndex }}</p>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row style="padding-left:7px;">
+      <div class="card" style="width: 98%;padding-left:15px;border-radius:1%;">
+        <div class="card-body">
+          <h1 style="padding-top:10px;" id="cd">Pollution</h1><br>
+          <ion-row *ngIf='pollution'>
+            <ion-col size="6">
+              <h1 id="aqi"> {{ pollution.data.indexes.baqi.aqi }} </h1>
+            </ion-col>
+            <ion-col size="3"></ion-col>
+            <ion-col size="3">
+              <h4 id="cat"> {{ pollution.data.indexes.baqi.category }} </h4>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <ion-list *ngIf='pollution'>
+                <ion-item>
+                   <span id="dom">Dominant</span>
+                   <p id="domp">{{ pollution.data.indexes.baqi.dominant_pollutant }}</p>
+                </ion-item>
+                <ion-item>
+                  <span class="val"> {{ pollution.data.pollutants.co.aqi_information.baqi.aqi }} </span>
+                  <p class="pollut"><b>{{ pollution.data.pollutants.co.display_name }}</b>({{ pollution.data.pollutants.co.full_name }})</p><br>
+                  <small class="conc">{{ pollution.data.pollutants.co.concentration.value }} {{pollution.data.pollutants.co.concentration.units}}</small>
+                </ion-item>
+                <ion-item>
+                  <span class="val"> {{ pollution.data.pollutants.no2.aqi_information.baqi.aqi }} </span>
+                  <p class="pollut"><b>{{ pollution.data.pollutants.no2.display_name }}</b>({{ pollution.data.pollutants.no2.full_name }})</p><br>
+                  <small class="conc">{{ pollution.data.pollutants.no2.concentration.value }} {{pollution.data.pollutants.no2.concentration.units}}</small>
+                </ion-item><ion-item>
+                  <span class="val"> {{ pollution.data.pollutants.o3.aqi_information.baqi.aqi }} </span>
+                  <p class="pollut"><b>{{ pollution.data.pollutants.o3.display_name }}</b>({{ pollution.data.pollutants.o3.full_name }})</p><br>
+                  <small class="conc">{{ pollution.data.pollutants.o3.concentration.value }} {{pollution.data.pollutants.o3.concentration.units}}</small>
+                </ion-item><ion-item>
+                  <span class="val"> {{ pollution.data.pollutants.pm10.aqi_information.baqi.aqi }} </span>
+                  <p class="pollut"><b>{{ pollution.data.pollutants.pm10.display_name }}</b>(paticular matter(<10μm))</p><br>
+                  <small class="conc">{{ pollution.data.pollutants.pm10.concentration.value }} {{pollution.data.pollutants.pm10.concentration.units}}</small>
+                </ion-item><ion-item>
+                  <span class="val"> {{ pollution.data.pollutants.pm25.aqi_information.baqi.aqi }} </span>
+                  <p class="pollut"><b>{{ pollution.data.pollutants.pm25.display_name }}</b>(paticular matter(<25μm))</p><br>
+                  <small class="conc">{{ pollution.data.pollutants.pm25.concentration.value }} {{pollution.data.pollutants.pm25.concentration.units}}</small>
+                </ion-item><ion-item>
+                  <span class="val"> {{ pollution.data.pollutants.so2.aqi_information.baqi.aqi }} </span>
+                  <p class="pollut"><b>{{ pollution.data.pollutants.so2.display_name }}</b>({{ pollution.data.pollutants.so2.full_name }})</p><br>
+                  <small class="conc">{{ pollution.data.pollutants.so2.concentration.value }} {{pollution.data.pollutants.so2.concentration.units}}</small>
+                </ion-item>
+              </ion-list>
+              <hr>
+              <h2>Health Recomendation</h2>
+              <p id="p" *ngIf='pollution'>{{ pollution.data.health_recommendations.general_population }}</p>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+    </ion-row>
+  </ion-grid>
+
+  <button style="padding-lef" *ngIf="darksky" (click)="btnAddClicked1()" ion-button>Send to cloud</button>
+  <button style="float:right;margin-right:7px;" *ngIf="darksky" (click)="btnAddClicked2()" ion-button>Send to cloud</button> -->
 </ion-content>

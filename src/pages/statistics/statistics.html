@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Hourly</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <div *ngIf="chart">
+      <canvas id="canvas" width="400px" height="280px">{{ chart }}</canvas>
+      <p style="text-align:center"><small>Temperature for next 24 hours</small></p>
+      <canvas id="canvas2" width="400px" height="280px">{{ chart }}</canvas>
+      <p style="text-align:center"><small>Humidity for next 24 hours</small></p>
+      <canvas id="canvas3" width="400px" height="280px">{{ chart }}</canvas>
+      <p style="text-align:center"><small>Precipitation Probability for next 24 hours</small></p>
+    </div>
+    <div *ngIf="darksky" style="color:#333333;">
+      {{ darksky.hourly.summary }}
+    </div>
+  </ion-grid>
+</ion-content>

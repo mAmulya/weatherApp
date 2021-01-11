@@ -1,3 +1,99 @@
-page-home {
+.aap {
+      background: linear-gradient(to bottom, #6495ed 40%, #ffffcc 60%);
+}
+hr {
+  color: #99ccff;
+}
 
+#bg{
+  background-color: #72a8ff;
+}
+
+#place{
+  color: #f7f7f7;
+  font-size: 22px;
+}
+
+#temp{
+  color:#f7f7f7;
+  font-size: 30px;
+}
+
+#sum{
+  color: #f7f7f7;
+  font-size: 18px;
+}
+
+#cd{
+  color : #333333;
+  font-size: 18px;
+}
+
+.d{
+  font-size: 16px;
+  color: #333333;
+  font-family: sans-serif;
+}
+
+.align{
+  text-align: center;
+}
+
+.fit{
+  height:750px;
+}
+
+.values{
+  float:right;
+  font-size: 16px;
+  color: #333333;
+  font-family: fantasy;
+}
+
+#aqi{
+  text-align: center;
+  font-size: 30px;
+  color: orange;
+}
+
+#cat{
+  color: orange;
+}
+
+.val{
+  font-size: 20px;
+  color: #333333;
+  font-family: fantasy;
+}
+
+.pollut{
+  float: right;
+  color:#333333;
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+.conc{
+  color:#d1d1d1;
+  float:right;
+}
+
+#dom{
+  font-weight: bold;
+  color:#333333;
+  font-family: sans-serif;
+  font-size: 18px;
+}
+
+#domp{
+  float: right;
+  font-family: fantasy;
+  color:#333333;
+  font-size: 18px;
+}
+
+#p{
+  font-style: italic;
+  text-align:justify;
+  padding-left: 7px;
 }
